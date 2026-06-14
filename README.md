@@ -33,7 +33,15 @@ input,textarea,select{font-family:inherit}
 // ═══════════════════════════════════════════════
 const SUPA_URL = "https://bkoofkedsbeylquxgdiu.supabase.co";
 const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJrb29ma2Vkc2JleWxxdXhnZGl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNDI2MTgsImV4cCI6MjA5MjkxODYxOH0.ZMB0Cj9jsHnf93D1AT6lQmLBL7rU9Mko0KJhAhHHMmE";
-const supa = supabase.createClient(SUPA_URL, SUPA_KEY);
+const supa = supabase.createClient(SUPA_URL, SUPA_KEY, {
+  auth: {
+    persistSession: true,
+    storageKey: "rft-auth",
+    storage: window.localStorage,
+    autoRefreshToken: true,
+    detectSessionInUrl: false
+  }
+});
 // ═══════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════
